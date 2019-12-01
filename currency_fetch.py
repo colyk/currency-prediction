@@ -16,6 +16,7 @@ def fetch(start_date: str, end_date: str, symbols: List[str], base: str = "USD")
     response = requests.get(url, params=params)
     response_json = response.json()
     df = pd.DataFrame(response_json["rates"]).T
+    df.to_csv('currency_data')
     df.plot()
     plt.show()
 
