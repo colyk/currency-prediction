@@ -28,13 +28,16 @@ def fetch(
         raise ValueError(response_json["error"])
 
     rates = response_json["rates"]
-    return DataFrame(rates, columns=sorted(rates.keys())).T
+    frame = DataFrame(rates, columns=sorted(rates.keys())).T
+    frame.index.name = "datetime"
+    return frame
 
 
 if __name__ == "__main__":
     print(fetch_symbols())
 
     df = fetch("2011-11-11", "2019-11-11", ["RUB", "PLN"])
+    print(df.head())
     print(df.describe())
     df.to_csv("currency_data")
     df.plot()
