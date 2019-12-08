@@ -9,6 +9,9 @@ verify_ssl = true
 requests = "*"
 pandas = "*"
 matplotlib = "*"
+keras = "*"
+jupyter = "*"
+tensorflow = "*"
 
 [requires]
 python_version = "3.7"
